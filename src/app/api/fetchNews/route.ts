@@ -1,23 +1,16 @@
-const bingEndpoint = async (category: string) => {
-  const data = await fetch(
+const newsEndpoint = async () => {
+  const res = await fetch(
     "https://" +
-      process.env.RAPIDAPI_BING_ENDPOINT +
-      "/news" +
-      `?category=${category}` +
-      "&textFormat=Raw",
-    {
-      headers: {
-        "x-rapidapi-key": `${process.env.RAPIDAPI_BING_KEY}`,
-        "x-rapidapi-host": `${process.env.RAPIDAPI_BING_ENDPOINT}`,
-        "X-BingApis-SDK": "true",
-      },
-    }
+      process.env.SERP_API_ENDPOINT +
+      "?engine=google_news" +
+      `&topic_token=${process.env.SERP_API_TOPIC_TOKEN}` +
+      `&api_key=${process.env.SERP_API_KEY}`,
+    { cache: "force-cache" }
   );
-
-  console.log(await data.json());
+  const data = await res.json();
+  return data.news_results;
 };
-export const POST = async (req: Request) => {
-  const data = await req.json();
-  await bingEndpoint(data.category);
-  return new Response("", { status: 200 });
+export const GET = async () => {
+  const results = await newsEndpoint();
+  return Response.json(results);
 };
