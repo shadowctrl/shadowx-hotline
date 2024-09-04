@@ -18,7 +18,13 @@ $poppins: var(--font-poppins);
 $nunito: var(--font-nunito);
 $josefin: var(--font-josefin);
 $bebas: var(--font-bebas);
+$pri-bg: #e3f1fe;
+$pri-col: #cbb8fc;
 
+body {
+    box-sizing: border-box;
+    background-color: $pri-bg;
+}
 @mixin flex-center($direction: row) {
     display: flex;
     justify-content: center;

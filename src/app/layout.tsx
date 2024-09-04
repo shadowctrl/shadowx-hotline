@@ -6,6 +6,7 @@ import {
   Josefin_Sans,
   Bebas_Neue,
 } from "next/font/google";
+import Navbar from "@/components/navbar/navbar";
 import "@/styles/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${poppins.variable} ${nunito.variable} ${josefin.variable} ${bebas.variable}`}
       >
+        <Navbar />
         {children}
       </body>
     </html>

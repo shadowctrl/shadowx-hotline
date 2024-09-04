@@ -1,0 +1,28 @@
+@import "@/styles/globals.scss";
+
+.nav-parent {
+    padding: 0 2vw;
+    padding-top: 5vh;
+    @include flex-center();
+    justify-content: flex-start;
+    gap: 1.5vw;
+    font-family: $poppins;
+}
+
+.nav-components {
+    @include flex-center();
+    background-color: white;
+    padding: 0 1vw;
+    border-radius: 2vw;
+    h1 {
+        font-weight: 600;
+    }
+    &:hover {
+        background-color: $pri-col;
+        cursor: pointer;
+    }
+    .nav-comp-container {
+        @include flex-center();
+        gap: 2px;
+    }
+}
