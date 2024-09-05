@@ -12,8 +12,9 @@
 .nav-components {
     @include flex-center();
     background-color: white;
-    padding: 0 1vw;
+    padding: 0.5vh 1vw;
     border-radius: 2vw;
+    transition: all 0.2s ease;
     h1 {
         font-weight: 600;
     }
