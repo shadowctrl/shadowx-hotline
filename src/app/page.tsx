@@ -29,46 +29,47 @@ export default async function Home() {
   const data = await fetchNewsData();
   return (
     <div className="main-parent">
-      <div className="left-container">
-        <div className="left-head">
-          <h2>Best of the Week</h2>
-          <h3>
-            Cybersecurity News <span>·</span>
-            <FormatDate date={data[0].highlight.date} />
-          </h3>
-        </div>
-        <div className="highlights-container">
-          <div className="news-highlight">
-            <h2>
-              {data[0].highlight.title}
-              <span>#{data[0].highlight.source.name}</span>
-            </h2>
-            <div className="highlight-wrap">
-              <Link
-                href={data[0].highlight.link}
-                target="_blank"
-                rel="noreferrer nofollow"
-              >
-                <h3>
-                  Read Article
-                  <FaArrowRightLong className="highlight-arrow" />
-                </h3>
-              </Link>
+      <div className="left-container-wrap">
+        <div className="left-container">
+          <div className="left-head">
+            <h2>Best of the Week</h2>
+            <h3 className="tag-topic">
+              Cybersecurity News <span>·</span>
+              <FormatDate date={data[0].highlight.date} />
+            </h3>
+          </div>
+          <div className="highlights-container">
+            <div className="news-highlight">
+              <h2>
+                {data[0].highlight.title}
+                <span>#{data[0].highlight.source.name}</span>
+              </h2>
+              <div className="highlight-wrap">
+                <Link
+                  href={data[0].highlight.link}
+                  target="_blank"
+                  rel="noreferrer nofollow noopener"
+                >
+                  <h3>
+                    Read Article
+                    <FaArrowRightLong className="highlight-arrow" />
+                  </h3>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="highlights-animation">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>{" "}
-          <div className="center-text">
-            Scanning Latest
-            <br />
-            Feed
-          </div>
-          {/* Wifi searching Animation */}
-          {/* <div id="wifi-loader">
+            <div className="highlights-animation">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>{" "}
+            <div className="center-text">
+              Scanning Latest
+              <br />
+              Feed
+            </div>
+            {/* Wifi searching Animation */}
+            {/* <div id="wifi-loader">
             <svg className="circle-outer" viewBox="0 0 86 86">
               <circle className="back" cx="43" cy="43" r="40" />
               <circle className="front" cx="43" cy="43" r="40" />
@@ -84,6 +85,31 @@ export default async function Home() {
             </svg>
             <div className="text" data-text="Searching" />
           </div> */}
+          </div>
+        </div>
+
+        <div className="latest-news-parent">
+          {data.slice(1, 4).map((value) => (
+            <div className="latest-news" key={value.title}>
+              {value.highlight ? (
+                <div className="latest-news-item">
+                  <p className="tag-topic">
+                    Cybersecurity News <span>·</span>
+                    <FormatDate date={value.highlight.date} />
+                  </p>
+                  <h3>{value.highlight.title} </h3>
+                </div>
+              ) : (
+                <div className="latest-news-item">
+                  <p className="tag-topic">
+                    Cybersecurity News <span>·</span>
+                    <FormatDate date={value.date} />
+                  </p>
+                  <h3>{value.title} </h3>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
       <div className="right-container"></div>
