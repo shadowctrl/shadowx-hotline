@@ -1,0 +1,33 @@
+@import "@/styles/globals.scss";
+
+.news-main {
+    @include flex-center(column);
+    gap: 3vh;
+    img {
+        max-width: 300px;
+        height: 150px;
+        border-radius: 1vw;
+        object-fit: cover;
+    }
+    h2,
+    p {
+        width: 300px;
+    }
+
+    .news-content {
+        @include flex-center(column);
+        gap: 1vh;
+        p {
+            justify-content: flex-start;
+            font-size: $--12px;
+            span {
+                font-size: $--12px;
+            }
+        }
+        h2 {
+            font-size: $--14px;
+            font-weight: 600;
+            font-family: $poppins;
+        }
+    }
+}

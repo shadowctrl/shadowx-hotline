@@ -6,6 +6,9 @@ interface Props {
   topic?: string;
   date: ReactNode;
 }
+interface DateProps {
+  date: string | number | Date;
+}
 
 const FormatDate: React.FC<DateProps> = ({ date }) => {
   let givenDate = new Date(date);
