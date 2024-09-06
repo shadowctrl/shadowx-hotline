@@ -34,7 +34,7 @@ export default async function Home() {
           <div className="left-head">
             <h2>Best of the Week</h2>
             <h3 className="tag-topic">
-              Cybersecurity News <span>·</span>
+              Latest News <span>·</span>
               <FormatDate date={data[0].highlight.date} />
             </h3>
           </div>
@@ -89,30 +89,130 @@ export default async function Home() {
         </div>
 
         <div className="latest-news-parent">
-          {data.slice(1, 4).map((value) => (
-            <div className="latest-news" key={value.title}>
+          {data.slice(1, 4).map((value: any) => (
+            <div
+              className="latest-news"
+              key={value.highlight ? value.highlight.title : value.title}
+            >
               {value.highlight ? (
-                <div className="latest-news-item">
+                <Link
+                  href={value.highlight.link}
+                  target="_blank"
+                  rel="noreferrer nofollow noopener"
+                  className="latest-news-item"
+                >
                   <p className="tag-topic">
                     Cybersecurity News <span>·</span>
                     <FormatDate date={value.highlight.date} />
                   </p>
                   <h3>{value.highlight.title} </h3>
-                </div>
+                </Link>
               ) : (
-                <div className="latest-news-item">
+                <Link
+                  href={value.link}
+                  target="_blank"
+                  rel="noreferrer nofollow noopener"
+                  className="latest-news-item"
+                >
                   <p className="tag-topic">
                     Cybersecurity News <span>·</span>
                     <FormatDate date={value.date} />
                   </p>
                   <h3>{value.title} </h3>
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="right-container-wrap">
+        <div className="right-container-highlight">
+          <h2 className="right-head">Recommended </h2>
+          {data.slice(4, 5).map((value) => (
+            <div
+              className="other-news-highlight"
+              key={value.highlight ? value.highlight.title : value.title}
+            >
+              {value.highlight ? (
+                <div className="others-highlight-item">
+                  <Link
+                    href={value.highlight.link}
+                    target="_blank"
+                    rel="noreferrer nofollow noopener"
+                  >
+                    <div className="card">
+                      <p className="heading">{value.highlight.title}</p>
+                      <p>{value.highlight.source.name}</p>
+                    </div>
+                  </Link>
+                </div>
+              ) : (
+                <div className="others-highlight-item">
+                  <Link
+                    href={value.link}
+                    target="_blank"
+                    rel="noreferrer nofollow noopener"
+                  >
+                    <div className="card">
+                      <p className="heading">{value.title}</p>
+                      <p>{value.source.name}</p>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="other-news-container">
+          {data.slice(5, 8).map((value) => (
+            <div key={value.highlight ? value.highlight.title : value.title}>
+              {value.highlight ? (
+                <div className="other-news-item">
+                  <p className="tag-topic">
+                    Cybersecurity News <span>·</span>
+                    <FormatDate date={value.highlight.date} />
+                  </p>
+                  <Link
+                    href={value.highlight.link}
+                    target="_blank"
+                    rel="noreferrer nofollow noopener"
+                    className="other-news-content"
+                  >
+                    <h3>{value.highlight.title}</h3>
+                    <Image
+                      src={value.highlight.thumbnail}
+                      width={100}
+                      height={50}
+                      alt={value.highlight.title}
+                    />
+                  </Link>
+                </div>
+              ) : (
+                <div className="other-news-item">
+                  <p className="tag-topic">
+                    Cybersecurity News <span>·</span>
+                    <FormatDate date={value.date} />
+                  </p>
+                  <Link
+                    href={value.link}
+                    target="_blank"
+                    rel="noreferrer nofollow noopener"
+                    className="other-news-content"
+                  >
+                    <h3>{value.title}</h3>
+                    <Image
+                      src={value.thumbnail}
+                      width={100}
+                      height={50}
+                      alt={value.title}
+                    />
+                  </Link>
                 </div>
               )}
             </div>
           ))}
         </div>
       </div>
-      <div className="right-container"></div>
     </div>
   );
 }
