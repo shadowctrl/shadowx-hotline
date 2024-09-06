@@ -23,17 +23,26 @@ export default async function Home() {
           <div className="left-container">
             <div className="left-head">
               <h2 className="head-title">Best of the Week</h2>
-              <TagTopic date={data[0].highlight.date} />
+              <TagTopic
+                date={data[0].highlight ? data[0].highlight.date : data[0].date}
+              />
             </div>
             <div className="highlights-container">
               <div className="news-highlight">
                 <h2>
-                  {data[0].highlight.title}
-                  <span>#{data[0].highlight.source.name}</span>
+                  {data[0].highlight ? data[0].highlight.title : data[0].title}
+                  <span>
+                    #
+                    {data[0].highlight
+                      ? data[0].highlight.source.name
+                      : data[0].source.name}
+                  </span>
                 </h2>
                 <div className="highlight-wrap">
                   <Link
-                    href={data[0].highlight.link}
+                    href={
+                      data[0].highlight ? data[0].highlight.link : data[0].link
+                    }
                     target="_blank"
                     rel="noreferrer nofollow noopener"
                   >
