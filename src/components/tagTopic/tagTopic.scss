@@ -1,0 +1,12 @@
+@import "@/styles/globals.scss";
+
+.tag-topic {
+    color: #0255ac;
+    font-weight: 600;
+    font-family: $poppins;
+    @include flex-center();
+    gap: 10px;
+    span {
+        color: slategrey;
+    }
+}
