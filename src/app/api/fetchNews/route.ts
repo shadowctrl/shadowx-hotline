@@ -3,6 +3,7 @@ const newsEndpoint = async () => {
     "https://" +
       process.env.SERP_API_ENDPOINT +
       "?engine=google_news" +
+      "&no_cache=true" +
       `&topic_token=${process.env.SERP_API_TOPIC_TOKEN}` +
       `&api_key=${process.env.SERP_API_KEY}`,
     { cache: "force-cache" }

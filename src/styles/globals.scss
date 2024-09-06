@@ -584,8 +584,14 @@ body {
         justify-content: space-between;
         h3 {
             font-family: $poppins;
-            font-size: $--16px;
+            font-size: 0.9rem;
             font-weight: 600;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
         img {
             width: 80px;
@@ -646,5 +652,5 @@ body {
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 3vw;
-    row-gap: 10vh;
+    row-gap: 5vh;
 }

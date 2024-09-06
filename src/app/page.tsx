@@ -206,15 +206,24 @@ export default async function Home() {
             key={value.highlight ? value.highlight.title : value.title}
           >
             <h2 className="head-title">Top News</h2>
-            <TagTopic date={value.highlight.date} />
+            <TagTopic
+              date={value.highlight ? value.highlight.date : value.date}
+            />
             <div className="section2-left-content">
-              <h1>{value.highlight.title}</h1>
-              <p>#{value.highlight.source.name}</p>
+              <h1>{value.highlight ? value.highlight.title : value.title}</h1>
+              <p>
+                #
+                {value.highlight
+                  ? value.highlight.source.name
+                  : value.source.name}
+              </p>
               <Image
-                src={value.highlight.thumbnail}
+                src={
+                  value.highlight ? value.thumbnail.thumbnail : value.thumbnail
+                }
                 width={400}
                 height={400}
-                alt={value.highlight.title}
+                alt={value.highlight ? value.highlight.title : value.title}
               />
             </div>
           </div>
