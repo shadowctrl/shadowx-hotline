@@ -4,11 +4,13 @@ import "@/styles/globals.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Value } from "sass";
 
 const fetchNewsData = async () => {
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/fetchNews`
+    `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/fetchNews`,
+    {
+      cache: "no-cache",
+    }
   );
   const data = await res.json();
   return data;
@@ -200,56 +202,58 @@ export default async function Home() {
       </div>
 
       <div className="section2-main">
-        {data.slice(8, 9).map((value) => (
-          <div
-            className="section2-left"
-            key={value.highlight ? value.highlight.title : value.title}
-          >
-            <h2 className="head-title">Top News</h2>
-            <TagTopic
-              date={value.highlight ? value.highlight.date : value.date}
-            />
-            <div className="section2-left-content">
-              <h1>{value.highlight ? value.highlight.title : value.title}</h1>
-              <p>
-                #
-                {value.highlight
-                  ? value.highlight.source.name
-                  : value.source.name}
-              </p>
-              <Image
-                src={
-                  value.highlight ? value.thumbnail.thumbnail : value.thumbnail
-                }
-                width={400}
-                height={400}
-                alt={value.highlight ? value.highlight.title : value.title}
+        <div className="section2-left-main">
+          {data.slice(8, 9).map((value) => (
+            <div
+              className="section2-left"
+              key={value.highlight ? value.highlight.title : value.title}
+            >
+              <h2 className="head-title">Top News</h2>
+              <TagTopic
+                date={value.highlight ? value.highlight.date : value.date}
               />
-            </div>
-          </div>
-        ))}
-        <div>
-          <div className="section2-newsrender">
-            {data.slice(9, 15).map((value) => (
-              <div key={value.highlight ? value.highlight.title : value.title}>
-                {value.highlight ? (
-                  <NewsRender
-                    imgUrl={value.highlight.thumbnail}
-                    title={value.highlight.title}
-                    date={value.highlight.date}
-                    source={value.highlight.source.name}
-                  />
-                ) : (
-                  <NewsRender
-                    imgUrl={value.thumbnail}
-                    title={value.title}
-                    date={value.date}
-                    source={value.source.name}
-                  />
-                )}
+              <div className="section2-left-content">
+                <h1>{value.highlight ? value.highlight.title : value.title}</h1>
+                <p>
+                  #
+                  {value.highlight
+                    ? value.highlight.source.name
+                    : value.source.name}
+                </p>
+                <Image
+                  src={
+                    value.highlight
+                      ? value.thumbnail.thumbnail
+                      : value.thumbnail
+                  }
+                  width={400}
+                  height={400}
+                  alt={value.highlight ? value.highlight.title : value.title}
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+        <div className="section2-newsrender">
+          {data.slice(9, 17).map((value) => (
+            <div key={value.highlight ? value.highlight.title : value.title}>
+              {value.highlight ? (
+                <NewsRender
+                  imgUrl={value.highlight.thumbnail}
+                  title={value.highlight.title}
+                  date={value.highlight.date}
+                  source={value.highlight.source.name}
+                />
+              ) : (
+                <NewsRender
+                  imgUrl={value.thumbnail}
+                  title={value.title}
+                  date={value.date}
+                  source={value.source.name}
+                />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

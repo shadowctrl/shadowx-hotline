@@ -591,7 +591,6 @@ body {
             -webkit-line-clamp: 3;
             overflow: hidden;
             text-overflow: ellipsis;
-            overflow: hidden;
         }
         img {
             width: 80px;
@@ -604,13 +603,13 @@ body {
 }
 
 .section2-main {
-    @include flex-center();
-    justify-content: space-between;
-    gap: 2vw;
+    display: flex;
     width: 100%;
-
+    gap: 2vw;
+    .section2-left-main {
+        flex: 1;
+    }
     .section2-left {
-        float: 1;
         background-color: white;
         padding: 3vh 1vw;
         border-radius: 1vw;
@@ -650,7 +649,7 @@ body {
 .section2-newsrender {
     flex: 1;
     display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 3vw;
-    row-gap: 5vh;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 2vw;
+    row-gap: 3vh;
 }
