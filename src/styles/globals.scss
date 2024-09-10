@@ -35,7 +35,7 @@ body {
 .main-parent-wrap {
     @include flex-center(column);
     align-items: flex-start;
-    gap: 2vh;
+    gap: 5vh;
     padding: 0 2vw;
 }
 .main-parent {
@@ -615,13 +615,13 @@ body {
     column-gap: 2vw;
     row-gap: 3vh;
     align-items: center;
-    justify-content: center;
 }
 
 .section3-main {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    column-gap: 2vw;
+    justify-content: center;
+    column-gap: 1vw;
     row-gap: 3vh;
     width: 100%;
 }

@@ -14,13 +14,15 @@ interface Props {
 const Cards: NextPage<Props> = ({ topic, date, title, source, imgUrl }) => {
   return (
     <div className="news-card">
-      {topic && <h2 className="news-card-title">{topic}</h2>}
-      <TagTopic date={date} />
-      <div className="news-card-content">
+      <div className="news-card-head">
+        {topic && <h2 className="news-card-title">{topic}</h2>}
+        <TagTopic date={date} />
         <h1>{title}</h1>
-        <p>#{source}</p>
-        <Image src={imgUrl} width={350} height={400} alt={title} />
+        <p>#{source}</p>{" "}
       </div>
+      <div className="news-card-content">
+        <Image src={imgUrl} width={350} height={400} alt={title} />
+      </div>{" "}
     </div>
   );
 };

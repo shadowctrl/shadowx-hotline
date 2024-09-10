@@ -47,7 +47,6 @@ export default async function Home() {
                       data[0].highlight ? data[0].highlight.link : data[0].link
                     }
                     target="_blank"
-                    rel="noreferrer nofollow noopener"
                   >
                     <h3>
                       Read Article
@@ -97,7 +96,6 @@ export default async function Home() {
                   <Link
                     href={value.highlight.link}
                     target="_blank"
-                    rel="noreferrer nofollow noopener"
                     className="latest-news-item"
                   >
                     <TagTopic date={value.highlight.date} />
@@ -107,7 +105,6 @@ export default async function Home() {
                   <Link
                     href={value.link}
                     target="_blank"
-                    rel="noreferrer nofollow noopener"
                     className="latest-news-item"
                   >
                     <TagTopic date={value.date} />
@@ -128,11 +125,7 @@ export default async function Home() {
               >
                 {value.highlight ? (
                   <div className="others-highlight-item">
-                    <Link
-                      href={value.highlight.link}
-                      target="_blank"
-                      rel="noreferrer nofollow noopener"
-                    >
+                    <Link href={value.highlight.link} target="_blank">
                       <div className="card">
                         <p className="heading">{value.highlight.title}</p>
                         <p>{value.highlight.source.name}</p>
@@ -141,11 +134,7 @@ export default async function Home() {
                   </div>
                 ) : (
                   <div className="others-highlight-item">
-                    <Link
-                      href={value.link}
-                      target="_blank"
-                      rel="noreferrer nofollow noopener"
-                    >
+                    <Link href={value.link} target="_blank">
                       <div className="card">
                         <p className="heading">{value.title}</p>
                         <p>{value.source.name}</p>
@@ -165,7 +154,6 @@ export default async function Home() {
                     <Link
                       href={value.highlight.link}
                       target="_blank"
-                      rel="noreferrer nofollow noopener"
                       className="other-news-content"
                     >
                       <h3>{value.highlight.title}</h3>
@@ -183,7 +171,6 @@ export default async function Home() {
                     <Link
                       href={value.link}
                       target="_blank"
-                      rel="noreferrer nofollow noopener"
                       className="other-news-content"
                     >
                       <h3>{value.title}</h3>
@@ -256,16 +243,30 @@ export default async function Home() {
       </div>
 
       <div className="section3-main">
-        {data.slice(17, 18).map((value) => (
+        {data.slice(17, 21).map((value) => (
           <Link
             key={value.highlight ? value.highlight.title : value.title}
             href={value.highlight ? value.highlight.link : value.link}
             target="_blank"
           >
             {value.highlight ? (
-              <div className="section3-item"></div>
+              <div className="section3-item">
+                <Cards
+                  date={value.highlight.date}
+                  title={value.highlight.title}
+                  source={value.highlight.source.name}
+                  imgUrl={value.highlight.thumbnail}
+                />
+              </div>
             ) : (
-              <div className="section3-item"></div>
+              <div className="section3-item">
+                <Cards
+                  date={value.date}
+                  title={value.title}
+                  source={value.source.name}
+                  imgUrl={value.thumbnail}
+                />
+              </div>
             )}
           </Link>
         ))}

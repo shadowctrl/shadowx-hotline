@@ -8,35 +8,40 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: fit-content;
+    width: 350px;
+    height: 400px;
     gap: 1vh;
-    .tag-topic {
-        font-size: $--14px;
-    }
 
-    .news-card-content {
-        padding-top: 2vh;
-        display: flex;
-        flex-direction: column;
-        gap: 3vh;
+    .news-card-head {
+        @include flex-center(column);
+        align-items: flex-start;
+        gap: 2vh;
         h1 {
-            max-width: 350px;
+            width: inherit;
             font-size: 20px;
             font-family: $poppins;
             font-weight: 600;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
         p {
             color: slategrey;
             font-family: $poppins;
             font-weight: 600;
             font-size: $--14px;
         }
-        img {
-            border-radius: 1vw;
-            width: 350px;
-            height: 175px;
-            object-fit: cover;
+        .tag-topic {
+            font-size: $--14px;
+            color: rgb(140, 95, 255);
         }
+    }
+
+    img {
+        border-radius: 1vw;
+        height: 150px;
+        object-fit: cover;
     }
 }
