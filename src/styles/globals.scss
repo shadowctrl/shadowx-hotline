@@ -35,7 +35,7 @@ body {
 .main-parent-wrap {
     @include flex-center(column);
     align-items: flex-start;
-    gap: 5vh;
+    gap: 2vh;
     padding: 0 2vw;
 }
 .main-parent {
@@ -606,50 +606,22 @@ body {
     display: flex;
     width: 100%;
     gap: 2vw;
-    .section2-left-main {
-        flex: 1;
-    }
-    .section2-left {
-        background-color: white;
-        padding: 3vh 1vw;
-        border-radius: 1vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: fit-content;
-        .tag-topic {
-            padding-top: 2vh;
-        }
-
-        .section2-left-content {
-            padding-top: 2vh;
-            display: flex;
-            flex-direction: column;
-            gap: 2vh;
-            h1 {
-                max-width: 400px;
-                font-size: $--24px;
-                font-family: $poppins;
-                font-weight: 600;
-            }
-
-            p {
-                color: slategrey;
-                font-family: $poppins;
-                font-weight: 600;
-            }
-            img {
-                border-radius: 1vw;
-            }
-        }
-    }
 }
 
 .section2-newsrender {
-    flex: 1;
+    flex: auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     column-gap: 2vw;
     row-gap: 3vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.section3-main {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 2vw;
+    row-gap: 3vh;
+    width: 100%;
 }

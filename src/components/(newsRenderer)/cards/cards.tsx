@@ -19,7 +19,7 @@ const Cards: NextPage<Props> = ({ topic, date, title, source, imgUrl }) => {
       <div className="news-card-content">
         <h1>{title}</h1>
         <p>#{source}</p>
-        <Image src={imgUrl} width={400} height={400} alt={title} />
+        <Image src={imgUrl} width={350} height={400} alt={title} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import "@/styles/globals.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Cards from "@/components/(newsRenderer)/cards/cards";
 
 const fetchNewsData = async () => {
   const res = await fetch(
@@ -204,39 +205,36 @@ export default async function Home() {
       <div className="section2-main">
         <div className="section2-left-main">
           {data.slice(8, 9).map((value) => (
-            <div
-              className="section2-left"
+            <Link
               key={value.highlight ? value.highlight.title : value.title}
+              href={value.highlight ? value.highlight.link : value.link}
+              target="_blank"
             >
-              <h2 className="head-title">Top News</h2>
-              <TagTopic
-                date={value.highlight ? value.highlight.date : value.date}
-              />
-              <div className="section2-left-content">
-                <h1>{value.highlight ? value.highlight.title : value.title}</h1>
-                <p>
-                  #
-                  {value.highlight
-                    ? value.highlight.source.name
-                    : value.source.name}
-                </p>
-                <Image
-                  src={
-                    value.highlight
-                      ? value.thumbnail.thumbnail
-                      : value.thumbnail
-                  }
-                  width={400}
-                  height={400}
-                  alt={value.highlight ? value.highlight.title : value.title}
+              {value.highlight ? (
+                <Cards
+                  date={value.highlight.date}
+                  title={value.highlight.title}
+                  source={value.highlight.source.name}
+                  imgUrl={value.highlight.thumbnail}
                 />
-              </div>
-            </div>
+              ) : (
+                <Cards
+                  date={value.date}
+                  title={value.title}
+                  source={value.source.name}
+                  imgUrl={value.thumbnail}
+                />
+              )}
+            </Link>
           ))}
         </div>
         <div className="section2-newsrender">
           {data.slice(9, 17).map((value) => (
-            <div key={value.highlight ? value.highlight.title : value.title}>
+            <Link
+              key={value.highlight ? value.highlight.title : value.title}
+              href={value.highlight ? value.highlight.link : value.link}
+              target="_blank"
+            >
               {value.highlight ? (
                 <NewsRender
                   imgUrl={value.highlight.thumbnail}
@@ -252,9 +250,25 @@ export default async function Home() {
                   source={value.source.name}
                 />
               )}
-            </div>
+            </Link>
           ))}
         </div>
+      </div>
+
+      <div className="section3-main">
+        {data.slice(17, 18).map((value) => (
+          <Link
+            key={value.highlight ? value.highlight.title : value.title}
+            href={value.highlight ? value.highlight.link : value.link}
+            target="_blank"
+          >
+            {value.highlight ? (
+              <div className="section3-item"></div>
+            ) : (
+              <div className="section3-item"></div>
+            )}
+          </Link>
+        ))}
       </div>
     </div>
   );
