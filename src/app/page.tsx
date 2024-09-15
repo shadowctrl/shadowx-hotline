@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Cards from "@/components/(newsRenderer)/cards/cards";
+import WideCards from "@/components/(newsRenderer)/wideCards/wideCards";
 
 const fetchNewsData = async () => {
   const res = await fetch(
@@ -270,6 +271,9 @@ export default async function Home() {
             )}
           </Link>
         ))}
+      </div>
+      <div className="section4-main">
+        <WideCards />
       </div>
     </div>
   );
